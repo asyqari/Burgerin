@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+    <title>ADMIN - BURGERIN</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="<?= base_url('assets/'); ?>images/logo-burger.png" type="">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -17,6 +18,17 @@
 </head>
 
 <body>
+    <header>
+        <div class="logo">CRUD MENU</div>
+        <nav>
+            <ul>
+                <li><a href="<?php echo base_url('C_auth/admin_home'); ?>">Home</a></li>
+                <li><a href="<?php echo base_url('C_auth/crud_usr'); ?>">CRUD User</a></li>
+                <li><a href="<?php echo base_url('C_auth/crud_menu'); ?>">CRUD Menu</a></li>
+                <li><a href="<?php echo base_url('C_auth/index'); ?>">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
@@ -26,14 +38,13 @@
                             <h2>Manage <b>Menu</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="<?= site_url('/C_auth/crud_usr')?>" class="btn btn-info"><i
-                                    class="material-icons">&#xE147;</i> <span>Tabel Menu</span></a>
+                            <a href="#addEmployeeModal" class="btn btn-info" data-toggle="modal"><i
+                                    class="material-icons" data-toggle="tooltip" title="Tambah Menu">&#xE147;</i>
+                                <span>Tambah Data</span></a>
                         </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
-                    <a href="#addEmployeeModal" class="add" data-toggle="modal"><i class="material-icons"
-                            data-toggle="tooltip" title="Tambah Menu">&#xF4FD;</i></a>
                     <thead>
                         <tr>
                             <th>No</th>
@@ -66,7 +77,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="clearfix">
+                <!-- <div class="clearfix">
                     <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                     <ul class="pagination">
                         <li class="page-item disabled"><a href="#">Previous</a></li>
@@ -77,7 +88,7 @@
                         <li class="page-item"><a href="#" class="page-link">5</a></li>
                         <li class="page-item"><a href="#" class="page-link">Next</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -164,11 +175,11 @@
                         <p>Are you sure you want to delete these Records?</p>
                         <p class="text-warning"><small>This action cannot be undone.</small></p>
                     </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
-                    </div>
                 </form>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </div>
             </div>
         </div>
     </div>

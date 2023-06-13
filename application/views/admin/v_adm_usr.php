@@ -26,14 +26,14 @@
                             <h2>Manage <b>User</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="add btn btn-success" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Tambah User"></i><span>Tambah User</span></a>
-                            <a href="<?= site_url('C_auth/crud_menu') ?>" class="btn btn-info"><i class="material-icons">&#xE147;</i> <span>Tabel Menu</span></a>
-                            <a href="<?= site_url('C_auth/logout') ?>" class="btn btn-danger"><i class="material-icons">&#xF1C2;</i> <span>Keluar</span></a>
+                            <a href="<?= site_url('C_auth/crud_menu')?>" class="btn btn-info"><i
+                                    class="material-icons">&#xE147;</i> <span>Tabel Menu</span></a>
                         </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
-
+                    <a href="#addEmployeeModal" class="add" data-toggle="modal"><i class="material-icons"
+                            data-toggle="tooltip" title="Tambah User">&#xF89A;</i></a>
                     <thead>
                         <tr>
                             <th>No</th>
@@ -53,13 +53,17 @@
                             <td><?= $dtm->email_user; ?></td>
                             <td><?= $dtm->password_user; ?></td>
                             <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit User">&#xE254;</i></a>
-                                <a href="<? base_url('C_auth/delete_user_action') ?>/<? $dtm->id_user ?>" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Hapus User">&#xE872;</i></a>
+                                <a href="<?php base_url('/C_auth/edit_user') . $dtm->id_user ?>" class="edit"
+                                    data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+                                        title="Edit User">&#xE254;</i></a>
+                                <a href="<?php base_url('/C_auth/delete_user_action') . $dtm->id_user ?>" class="delete"
+                                    data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+                                        title="Hapus User">&#xE872;</i></a>
                             </td>
                         </tr>
                         <?php $nomor++; ?>
-                    <?php endforeach; ?>
-                    </tr>
+                        <?php endforeach; ?>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="clearfix">
@@ -117,19 +121,22 @@
                         <h4 class="modal-title">Edit User</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <input type="hidden" name="id_user" id="id_user" value="<?php echo $queryUsrDetail->id_user ?>">
+                    <input type="hidden" value="<?php echo $queryUsrDetail->id_mitra ?>" name="id_user">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="nama_user" class="form-control" value="<?php echo $queryUsrDetail->nama_user ?>" required>
+                            <input type="text" name="nama_user" class="form-control"
+                                value="<?php echo $queryUsrDetail->nama_user ?>" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email_user" class="form-control" value="<?php echo $queryUsrDetail->email_user ?>" required>
+                            <input type="email" name="email_user" class="form-control"
+                                value="<?php echo $queryUsrDetail->email_user ?>" required>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password_user" class="form-control" value="<?php echo $queryUsrDetail->password_user ?>" required>
+                            <input type="password" name="password_user" class="form-control"
+                                value="<?php echo $queryUsrDetail->password_user ?>" required>
                         </div>
 
                     </div>

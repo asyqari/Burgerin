@@ -26,13 +26,14 @@
                             <h2>Manage <b>Menu</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addMenuModal" class="add btn btn-success" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Tambah Menu"></i><span>Tambah Menu</span></a>
-                            <a href="<?= site_url('C_auth/crud_usr') ?>" class="btn btn-info"><i class="material-icons">&#xE147;</i> <span>Tabel User</span></a>
-                            <a href="<?= site_url('C_auth/logout') ?>" class="btn btn-danger"><i class="material-icons">&#xF1C2;</i> <span>Keluar</span></a>
+                            <a href="<?= site_url('/C_auth/crud_usr')?>" class="btn btn-info"><i
+                                    class="material-icons">&#xE147;</i> <span>Tabel Menu</span></a>
                         </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
+                    <a href="#addEmployeeModal" class="add" data-toggle="modal"><i class="material-icons"
+                            data-toggle="tooltip" title="Tambah Menu">&#xF4FD;</i></a>
                     <thead>
                         <tr>
                             <th>No</th>
@@ -54,13 +55,15 @@
                             <td><?= $dtm->deskripsi_menu; ?></td>
                             <td><?= $dtm->foto_menu; ?></td>
                             <td>
-                                <a href="#editMenuModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit Menu">&#xE254;</i></a>
-                                <a href="#deleteMenuModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Hapus Menu">&#xE872;</i></a>
+                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="Edit Menu">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                        class="material-icons" data-toggle="tooltip" title="Hapus Menu">&#xE872;</i></a>
                             </td>
                         </tr>
                         <?php $nomor++; ?>
-                    <?php endforeach; ?>
-                    </tr>
+                        <?php endforeach; ?>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="clearfix">
@@ -79,9 +82,10 @@
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="addMenuModal" class="modal fade">
+    <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
+                <?= form_open_multipart('upload/do_upload');?>
                 <div class="modal-header">
                     <h4 class="modal-title">Tambah Menu</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -113,7 +117,7 @@
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editMenuModal" class="modal fade">
+    <div id="editEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form method="POST" action="<?= base_url('C_auth/insert_menu_action') ?>">
@@ -148,7 +152,7 @@
         </div>
     </div>
     <!-- Delete Modal HTML -->
-    <div id="deleteMenuModal" class="modal fade">
+    <div id="deleteEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>

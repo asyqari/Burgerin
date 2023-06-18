@@ -22,7 +22,7 @@
         <div class="logo">CRUD USER</div>
         <nav>
             <ul>
-                <li><a href="<?php echo base_url('C_auth/crud_menu'); ?>">Home</a></li>
+                <li><a href="<?php echo base_url('C_auth/admin_home'); ?>">Home</a></li>
                 <li><a href="<?php echo base_url('C_auth/crud_usr'); ?>">CRUD User</a></li>
                 <li><a href="<?php echo base_url('C_auth/crud_menu'); ?>">CRUD Menu</a></li>
                 <li><a href="<?php echo base_url('C_auth/index'); ?>">Logout</a></li>

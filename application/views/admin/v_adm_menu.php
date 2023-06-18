@@ -52,6 +52,7 @@
                             <th>Harga Menu</th>
                             <th>Deskripsi Menu</th>
                             <th>Foto Menu</th>
+                            <th>Kategori Menu</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -64,12 +65,15 @@
                             <td><?= $dtm->nama_menu; ?></td>
                             <td><?= $dtm->harga_menu; ?></td>
                             <td><?= $dtm->deskripsi_menu; ?></td>
-                            <td><?= $dtm->foto_menu; ?></td>
+                            <td><img src="<?= base_url('assets/images/'.$dtm->foto_menu) ?>" width="70px" height="50px">
+                            </td>
+                            <td><?= $dtm->id_kategori_menu; ?></td>
                             <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                        data-toggle="tooltip" title="Edit Menu">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Hapus Menu">&#xE872;</i></a>
+                                <a href="#editEmployeeModal<?= $dtm->id_menu; ?>" class="edit" data-toggle="modal"><i
+                                        class="material-icons" data-toggle="tooltip" title="Edit Menu">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal<?= $dtm->id_menu; ?>" class="delete"
+                                    data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+                                        title="Hapus Menu">&#xE872;</i></a>
                             </td>
                         </tr>
                         <?php $nomor++; ?>
@@ -96,39 +100,44 @@
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <?= form_open_multipart('upload/do_upload');?>
-                <div class="modal-header">
-                    <h4 class="modal-title">Tambah Menu</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Nama Menu</label>
-                        <input type="text" name="nama_menu" class="form-control" required>
+                <form method="POST" action="<?= base_url('C_auth/insert_menu_action') ?>">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah Menu</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <div class="form-group">
-                        <label>Harga Menu</label>
-                        <input type="email" name="harga_menu" class="form-control" required>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama Menu</label>
+                            <input type="text" name="nama_menu" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Harga Menu</label>
+                            <input type="text" name="harga_menu" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi Menu</label>
+                            <textarea class="form-control" name="deskripsi_menu" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Foto Menu</label>
+                            <input class="form-control" type="file" name="foto_menu" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Kategori Menu</label>
+                            <input type="text" name="kategori_menu" class="form-control" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Deskripsi Menu</label>
-                        <textarea class="form-control" name="deskripsi_menu" required></textarea>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-success" value="Add">
                     </div>
-                    <div class="form-group">
-                        <label>Foto Menu</label>
-                        <input class="form-control" type="file" name="foto_menu" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
                 </form>
             </div>
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <?php foreach ($data as $dtm) : ?>
+    <div id="editEmployeeModal<?= $dtm->id_menu; ?>" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form method="POST" action="<?= base_url('C_auth/insert_menu_action') ?>">
@@ -139,19 +148,27 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nama Menu</label>
-                            <input type="text" name="nama_menu" class="form-control" required>
+                            <input type="hidden" name="id_menu" value="<?= $dtm->id_menu; ?>">
+                            <input type="text" name="nama_menu" class="form-control" value="<?= $dtm->nama_menu; ?>">
                         </div>
                         <div class="form-group">
                             <label>Harga Menu</label>
-                            <input type="email" name="harga_menu" class="form-control" required>
+                            <input type="text" name="harga_menu" class="form-control" value="<?= $dtm->harga_menu; ?>">
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Menu</label>
-                            <textarea class="form-control" name="deskripsi_menu" required></textarea>
+                            <input type="text" name="harga_menu" class="form-control"
+                                value="<?= $dtm->deskripsi_menu; ?>">
                         </div>
                         <div class="form-group">
                             <label>Foto Menu</label>
-                            <input class="form-control" type="file" name="foto_menu" required>
+                            <input class="form-control" type="file" name="foto_menu" value="<img src="
+                                <?= base_url('assets/images/'.$dtm->foto_menu) ?>" width="70px" height="50px">">
+                        </div>
+                        <div class="form-group">
+                            <label>Kategori Menu</label>
+                            <input type="text" name="kategori_menu" class="form-control"
+                                value="<?= $dtm->kategori_menu; ?>">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -162,27 +179,30 @@
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
     <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <?php foreach ($data as $dtm) : ?>
+    <div id="deleteEmployeeModal<?= $dtm->id_menu; ?>" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Delete Menu</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete these Records?</p>
-                        <p class="text-warning"><small>This action cannot be undone.</small></p>
-                    </div>
-                </form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Menu</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah anda yakin akan dihapus?</p>
+                    <p class="text-warning"><small>Setelah diklik, anda tidak dapat mengembalikan datanya
+                            kembali!</small></p>
+                </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
+                    <input type="button" class="btn btn-default" name="cancel" data-dismiss="modal" value="Cancel">
+                    <a href="<?= base_url('C_auth/delete_menu_action/').$dtm->id_menu; ?>"><input type="submit"
+                            name="submit" class="btn btn-danger" value="Delete"></a>
                 </div>
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
 </body>
 
 </html>

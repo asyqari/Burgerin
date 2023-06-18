@@ -15,5 +15,9 @@ class M_menu extends CI_Model {
     public function tampil_data_menu(){
 		return $this->db->get('t_menu');
 	}
+
+    public function delete_menu_data($where, $table) {
+		$this->db->delete($table, $where);
+    }
     
 }

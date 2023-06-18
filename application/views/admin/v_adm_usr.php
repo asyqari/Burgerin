@@ -62,13 +62,12 @@
                             <td><?= $nomor ?></td>
                             <td><?= $dtm->nama_user; ?></td>
                             <td><?= $dtm->email_user; ?></td>
-                            <td><?= $dtm->password_user; ?></td>
+                            <td><?= md5($dtm->password_user); ?></td>
                             <td>
-                                <a href="#editEmployeeModal <?php base_url('/C_auth/edit_user') . $dtm->id_user ?>"
-                                    class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
-                                        title="Edit User">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal <?php base_url('/C_auth/delete_user_action') . $dtm->id_user ?>"
-                                    class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+                                <a href="#editEmployeeModal<?= $dtm->id_user; ?>" class="edit" data-toggle="modal"><i
+                                        class="material-icons" data-toggle="tooltip" title="Edit User">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal<?= $dtm->id_user; ?>" class="delete"
+                                    data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
                                         title="Hapus User">&#xE872;</i></a>
                             </td>
                         </tr>
@@ -104,15 +103,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="nama_user" class="form-control" required>
+                            <input type="text" name="nama_user" class="form-control" placeholder="Masukan Nama"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email_user" class="form-control" required>
+                            <input type="email" name="email_user" class="form-control" placeholder="Masukan Email"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <textarea name="password_user" class="form-control" required></textarea>
+                            <textarea name="password_user" class="form-control" placeholder="Masukan Password"
+                                required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -124,7 +126,8 @@
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <?php foreach ($data as $dtm) : ?>
+    <div id="editEmployeeModal<?= $dtm->id_user; ?>" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form method="POST" action="<?= base_url('C_auth/edit_user_action') ?>">
@@ -132,22 +135,20 @@
                         <h4 class="modal-title">Edit User</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <input type="hidden" value="<?php echo $queryUsrDetail->id_mitra ?>" name="id_user">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="nama_user" class="form-control"
-                                value="<?php echo $queryUsrDetail->nama_user ?>" required>
+                            <input type="hidden" name="id_user" value="<?= $dtm->id_user; ?>">
+                            <input type="text" name="nama_user" class="form-control" value="<?= $dtm->nama_user; ?>">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email_user" class="form-control"
-                                value="<?php echo $queryUsrDetail->email_user ?>" required>
+                            <input type="email" name="email_user" class="form-control" value="<?= $dtm->email_user; ?>">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
                             <input type="password" name="password_user" class="form-control"
-                                value="<?php echo $queryUsrDetail->password_user ?>" required>
+                                value="<?= $dtm->password_user; ?>">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -158,27 +159,30 @@
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
     <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <?php foreach ($data as $dtm) : ?>
+    <div id="deleteEmployeeModal<?= $dtm->id_user; ?>" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="POST" action="<?= base_url('C_auth/delete_user_action') ?>">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Delete User</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete these Records?</p>
-                        <p class="text-warning"><small>This action cannot be undone.</small></p>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" name="cancel" data-dismiss="modal" value="Cancel">
-                        <input type="submit" name="submit" class="btn btn-danger" value="Delete">
-                    </div>
-                </form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete User</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah anda yakin akan dihapus?</p>
+                    <p class="text-warning"><small>Setelah diklik, anda tidak dapat mengembalikan datanya
+                            kembali!</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" name="cancel" data-dismiss="modal" value="Cancel">
+                    <a href="<?= base_url('C_auth/delete_user_action/').$dtm->id_user; ?>"><input type="submit"
+                            name="submit" class="btn btn-danger" value="Delete"></a>
+                </div>
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
 </body>
 
 </html>

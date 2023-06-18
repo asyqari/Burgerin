@@ -328,13 +328,7 @@
                             Burgerin
                         </a>
                         <p>
-
-                            Burgerin adalah restoran burger yang menawarkan pengalaman kuliner yang lezat dan menggugah
-                            selera. Dengan suasana modern dan nyaman, kami menyajikan berbagai pilihan burger dengan
-                            daging panggang segar, roti panggang renyah, serta topping dan saus yang kreatif. Dari
-                            burger klasik hingga opsi vegetarian dan vegan, Burgerin memastikan setiap pelanggan dapat
-                            menemukan hidangan sesuai selera mereka. Dengan pelayanan ramah dan profesional, restoran
-                            ini adalah tempat ideal untuk menikmati burger yang lezat dalam suasana yang menyenangkan.
+                            Sejak 2023
                         </p>
                         <div class="footer_social">
                             <a href="https://www.instagram.com/burgerking.id/?hl=en">

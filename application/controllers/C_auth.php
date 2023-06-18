@@ -78,59 +78,68 @@ class C_auth extends CI_Controller {
     }
 
     public function edit_user_action(){
+
         $id_user = $this->input->post('id_user');
         $nama_user = $this->input->post('nama_user');
-    $email_user = $this->input->post('email_user');
-$password_user = $this->input->post('password_user');
+        $email_user = $this->input->post('email_user');
+        $password_user = $this->input->post('password_user');
 
-$updateaction = array(
-    'nama_user' => $nama_user,
-    'email_user' => $email_user,
-    'password_user' => $password_user
-);
+        $update_data_user = array(
+            'id_user' => $id_user,
+            'nama_user' => $nama_user,
+            'email_user' => $email_user,
+            'password_user' => $password_user
+        );
 
-    $this->load->model('M_user'); // Menggunakan model M_user
-$this->M_user->editMitra($id_user, $updateaction); // Memanggil fungsi editMitra di model M_user
-redirect(base_url('C_auth/crud_usr')); // Menggunakan base_url dengan format yang benar
+        $this->db->where('id_user', $id_user);
+        $this->db->update('t_user', $update_data_user);
+
+        redirect(base_url('C_auth/crud_usr'));
     }
     public function delete_user_action($id_user){
-        $M_User = $this->load->model('M_user');
-        $this->M_user->deleteDataUserDetail($id_user);
+        $where = array('id_user' => $id_user);
+        $this->M_user->delete_user_data($where, 't_user');
         redirect(base_url('/index.php/C_auth/crud_usr'));
 	}
     
     public function crud_menu(){
         $data_menu = $this->M_menu->getAllMenu();
+
         $temp['data'] = $data_menu;
         $this->load->view('admin/v_adm_menu',$temp);
     }
 
     public function insert_menu_action(){
-        $nama_menu = $this->input->post('nama_menu');
-    $harga_menu = $this->input->post('harga_menu');
-    $deskripsi_menu = $this->input->post('deskripsi_menu');
-    
-    // Konfigurasi upload foto
-    $config['upload_path'] = '././assets/img/'; // Lokasi folder penyimpanan foto
-    $config['allowed_types'] = 'gif|jpg|jpeg|png'; // Tipe file yang diizinkan
-    $config['max_size'] = 2048; // Ukuran maksimal file (dalam kilobytes)
-    
+    $config['upload_path'] = './assets/images'; // Folder tempat menyimpan foto
+    $config['allowed_types'] = 'gif|jpg|jpeg|png'; // Tipe file yang diperbolehkan
+    $config['max_size'] = 2048; // Ukuran maksimal file (dalam kilobyte)
+
     $this->load->library('upload', $config);
-    
-    if ($this->upload->do_upload('foto_menu')) {
-        $foto_menu = $this->upload->data('file_name'); // Nama file foto yang diupload
-        $insert_data_menu = array(
-            'nama_menu' => $nama_menu,
-            'harga_menu' => $harga_menu,
-            'deskripsi_menu' => $deskripsi_menu,
-            'foto_menu' => $foto_menu
+
+        if ($this->upload->do_upload('foto_menu')) {
+        // Jika upload sukses, simpan data menu ke database
+        $data = array(
+            'nama_menu' => $this->input->post('nama'),
+            'harga_menu' => $this->input->post('harga'),
+            'deskripsi_menu' => $this->input->post('deskripsi'),
+            'foto_menu' => $this->upload->data('file_name'),
+            'kategori_menu' => $this->input->post('kategori')
         );
 
-        // Proses penyimpanan data menu ke database
-        $this->M_menu->insert_data_menu($insert_data_menu);
+        $this->db->insert('t_menu', $data);
 
-        redirect(base_url('C_auth/crud_usr'));
+        redirect(base_url('C_auth/crud_menu'));
     }
+	}
+
+    public function edit_menu_action(){
+
+        redirect(base_url('C_auth/crud_menu'));
+    }
+    public function delete_menu_action($id_menu){
+        $where = array('id_menu' => $id_menu);
+        $this->M_menu->delete_menu_data($where, 't_menu');
+        redirect(base_url('/index.php/C_auth/crud_menu'));
 	}
 
     public function restaurant_menu()

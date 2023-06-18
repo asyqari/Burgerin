@@ -110,32 +110,59 @@ class C_auth extends CI_Controller {
     }
 
     public function insert_menu_action(){
-    $config['upload_path'] = './assets/images'; // Folder tempat menyimpan foto
-    $config['allowed_types'] = 'gif|jpg|jpeg|png'; // Tipe file yang diperbolehkan
-    $config['max_size'] = 2048; // Ukuran maksimal file (dalam kilobyte)
+        $config['upload_path'] = './assets/images'; // Folder tempat menyimpan foto
+        $config['allowed_types'] = 'gif|jpg|jpeg|png'; // Tipe file yang diperbolehkan
+        $config['max_size'] = 2048; // Ukuran maksimal file (dalam kilobyte)
 
-    $this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 
         if ($this->upload->do_upload('foto_menu')) {
-        // Jika upload sukses, simpan data menu ke database
-        $data = array(
-            'nama_menu' => $this->input->post('nama'),
-            'harga_menu' => $this->input->post('harga'),
-            'deskripsi_menu' => $this->input->post('deskripsi'),
-            'foto_menu' => $this->upload->data('file_name'),
-            'kategori_menu' => $this->input->post('kategori')
-        );
+            // Jika upload sukses, simpan data menu ke database
+            $data = array(
+                'nama_menu' => $this->input->post('nama_menu'),
+                'harga_menu' => $this->input->post('harga_menu'),
+                'deskripsi_menu' => $this->input->post('deskripsi_menu'),
+                'foto_menu' => $this->upload->data('file_name'),
+                'id_kategori_menu' => $this->input->post('kategori_menu')
+            );
 
-        $this->db->insert('t_menu', $data);
+            $this->db->insert('t_menu', $data);
 
-        redirect(base_url('C_auth/crud_menu'));
+            redirect('C_auth/crud_menu');
+        }
     }
-	}
 
     public function edit_menu_action(){
+        $config['upload_path'] = './assets/images';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png'; 
+        $config['max_size'] = 2048; 
 
-        redirect(base_url('C_auth/crud_menu'));
+        $this->load->library('upload', $config);
+
+        $id_menu = $this->input->post('id_menu'); 
+        $existing_data = $this->db->get_where('t_menu', array('id_menu' => $id_menu))->row_array();
+
+        // edit data yg mau diedit
+        $data = array(
+            'nama_menu' => $this->input->post('nama_menu') ?: $existing_data['nama_menu'], 
+            'harga_menu' => $this->input->post('harga_menu') ?: $existing_data['harga_menu'],
+            'deskripsi_menu' => $this->input->post('deskripsi_menu') ?: $existing_data['deskripsi_menu'],
+            'id_kategori_menu' => $this->input->post('kategori_menu') ?: $existing_data['id_kategori_menu']
+        );
+
+        if ($this->upload->do_upload('foto_menu')) {
+            $data['foto_menu'] = $this->upload->data('file_name');
+        } else {
+            $data['foto_menu'] = $existing_data['foto_menu'];
+        }
+
+        // Uupdate data terbaru ke db
+        $this->db->where('id_menu', $id_menu);
+        $this->db->update('t_menu', $data);
+
+        redirect('C_auth/crud_menu');
     }
+
     public function delete_menu_action($id_menu){
         $where = array('id_menu' => $id_menu);
         $this->M_menu->delete_menu_data($where, 't_menu');

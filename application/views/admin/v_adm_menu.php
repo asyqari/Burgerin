@@ -100,7 +100,7 @@
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="POST" action="<?= base_url('C_auth/insert_menu_action') ?>">
+                <form method="post" action="<?= base_url('C_auth/insert_menu_action') ?>" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h4 class="modal-title">Tambah Menu</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -140,7 +140,7 @@
     <div id="editEmployeeModal<?= $dtm->id_menu; ?>" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="POST" action="<?= base_url('C_auth/insert_menu_action') ?>">
+                <form method="POST" action="<?= base_url('C_auth/edit_menu_action') ?>" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h4 class="modal-title">Edit Menu</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -157,18 +157,18 @@
                         </div>
                         <div class="form-group">
                             <label>Deskripsi Menu</label>
-                            <input type="text" name="harga_menu" class="form-control"
+                            <input type="text" name="deskripsi_menu" class="form-control"
                                 value="<?= $dtm->deskripsi_menu; ?>">
                         </div>
                         <div class="form-group">
                             <label>Foto Menu</label>
-                            <input class="form-control" type="file" name="foto_menu" value="<img src="
-                                <?= base_url('assets/images/'.$dtm->foto_menu) ?>" width="70px" height="50px">">
+                            <input class="form-control" type="file" name="foto_menu">
+                            <img src="<?= base_url('assets/images/'.$dtm->foto_menu) ?>" width="70px" height="50px">
                         </div>
                         <div class="form-group">
                             <label>Kategori Menu</label>
                             <input type="text" name="kategori_menu" class="form-control"
-                                value="<?= $dtm->kategori_menu; ?>">
+                                value="<?= $dtm->id_kategori_menu; ?>">
                         </div>
                     </div>
                     <div class="modal-footer">

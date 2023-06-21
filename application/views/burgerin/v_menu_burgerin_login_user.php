@@ -17,26 +17,45 @@
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/'); ?>css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+</head>
+<!--owl slider stylesheet -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<!-- nice select  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+<!-- font awesome style -->
+<link href="<?= base_url('assets/'); ?>css/font-awesome.min.css" rel="stylesheet" />
 
-    <!--owl slider stylesheet -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <!-- nice select  -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
-        integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
-        crossorigin="anonymous" />
-    <!-- font awesome style -->
-    <link href="<?= base_url('assets/'); ?>css/font-awesome.min.css" rel="stylesheet" />
-
-    <!-- Custom styles for this template -->
-    <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="<?= base_url('assets/'); ?>css/responsive.css" rel="stylesheet" />
-
+<!-- Custom styles for this template -->
+<link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="<?= base_url('assets/'); ?>css/responsive.css" rel="stylesheet" />
+<style>
+    header {
+        background-color: black;
+    }
+</style>
 </head>
 
 <body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+
+    <script type="text/javascript">
+        <?php if ($this->session->flashdata('success')) { ?>
+            toastr.success("<?php echo $this->session->flashdata('success'); ?>");
+        <?php } else if ($this->session->flashdata('error')) {  ?>
+            toastr.error("<?php echo $this->session->flashdata('error'); ?>");
+        <?php } else if ($this->session->flashdata('warning')) {  ?>
+            toastr.warning("<?php echo $this->session->flashdata('warning'); ?>");
+        <?php } else if ($this->session->flashdata('info')) {  ?>
+            toastr.info("<?php echo $this->session->flashdata('info'); ?>");
+        <?php } ?>
+    </script>
+
+
 
     <div class="hero_area">
         <div class="bg-box">
@@ -52,9 +71,7 @@
                         </span>
                     </a>
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class=""> </span>
                     </button>
 
@@ -64,74 +81,26 @@
                                 <a class="nav-link" href="<?= site_url('C_auth/index_login_user'); ?>">Home</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link"
-                                    href="<?= site_url('C_auth/restaurant_menu_login_user'); ?>">Menu</a>
+                                <a class="nav-link" href="<?= site_url('C_auth/restaurant_menu_login_user'); ?>">Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= site_url('C_auth/restaurant_book_login_user'); ?>">Book
-                                    Menu</a>
+                                <a class="nav-link" href="<?= site_url('C_auth/restaurant_book_login_user'); ?>">Book Menu</a>
                             </li>
                         </ul>
                         <div class="user_option">
                             <a href="" class="user_link">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                             </a>
-                            <a class="cart_link" href="#">
-                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                    viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
-                                    xml:space="preserve">
-                                    <g>
-                                        <g>
-                                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                        </g>
-                                    </g>
-                                    <g>
-                                        <g>
-                                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                        </g>
-                                    </g>
-                                    <g>
-                                        <g>
-                                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                        </g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                    <g>
-                                    </g>
-                                </svg>
+                            <?php
+                            $keranjang = $this->cart->contents();
+                            $jml_item = 0;
+                            foreach ($keranjang as $key => $value) {
+                                $jml_item = $jml_item + $value['qty'];
+                            }
+                            ?>
+                            <a class="cart_link" href="<?= base_url('Belanja/tampil') ?>">
+                                <i class="bi bi-cart" aria-hidden="true"></i>
+                                <span class="badge badge-danger navbar-badge"><?= $jml_item ?></span>
                             </a>
                             <form class="form-inline">
                                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
@@ -183,107 +152,49 @@
                 </h2>
             </div>
 
-            <!-- <ul class="filters_menu">
-            <li class="active" data-filter="*">All</li>
-            <li data-filter=".burger">Burger</li>
-            <li data-filter=".pizza">Pizza</li>
-            <li data-filter=".pasta">Pasta</li>
-            <li data-filter=".fries">Fries</li>
-        </ul> -->
-
             <div class="filters-content">
                 <div class="row grid">
-                    <?php 
-		foreach($t_menu as $menu_tampil){ 
-		?>
-                    <div class="col-sm-6 col-lg-4 all pizza">
-                        <div class="box">
-                            <div>
-                                <div class="img-box">
-                                    <img src="../assets/images/<?= $menu_tampil->foto_menu?>" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h5></h5>
-                                    <?= $menu_tampil->nama_menu ?>
-                                    </h5>
-                                    <p>
-                                        <?= $menu_tampil->deskripsi_menu ?>
-                                    </p>
-                                    <div class="options">
-                                        <h6>
-                                            <?= $menu_tampil->harga_menu ?>
-                                        </h6>
-                                        <a href="">
-                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 456.029 456.029"
-                                                style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                                                <g>
-                                                    <g>
-                                                        <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <g>
-                                                        <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <g>
-                                                        <path
-                                                            d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                            </svg>
-                                        </a>
+                    <?php
+                    foreach ($t_menu as $menu_tampil) {
+                    ?>
+                        <div class="col-sm-6 col-lg-4 all pizza">
+                            <?php
+                            echo form_open('belanja/add');
+                            echo form_hidden('id', $menu_tampil->id_menu);
+                            echo form_hidden('qty', 1);
+                            echo form_hidden('price', $menu_tampil->harga_menu);
+                            echo form_hidden('name', $menu_tampil->nama_menu);
+                            echo form_hidden('image', $menu_tampil->foto_menu);
+                            echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
+                            ?>
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="../assets/images/<?= $menu_tampil->foto_menu ?>" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5></h5>
+                                        <?= $menu_tampil->nama_menu ?>
+                                        </h5>
+                                        <p>
+                                            <?= $menu_tampil->deskripsi_menu ?>
+                                        </p>
+                                        <div class="options">
+                                            <h6>
+                                                <?= $menu_tampil->harga_menu ?>
+                                            </h6>
+                                            <button href="<?php echo base_url() . 'Belanja/add' ?>" class="btn btn-sm btn-warning">
+                                                <i class="bi bi-cart-plus-fill"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } ?>
 
+                            </div>
+                            <?php echo form_close(); ?>
+                        </div>
+                    <?php } ?>
                 </div>
-                <!-- <div class="btn-box">
-                <a href="">
-                    View More
-                </a>
-            </div> -->
     </section>
     <!-- footer section -->
     <footer class="footer_section">
@@ -355,8 +266,7 @@
     <!-- jQery -->
     <script src="<?= base_url('assets/'); ?>js/jquery-3.4.1.min.js"></script>
     <!-- popper js -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
     <!-- bootstrap js -->
     <script src="<?= base_url('assets/'); ?>js/bootstrap.js"></script>

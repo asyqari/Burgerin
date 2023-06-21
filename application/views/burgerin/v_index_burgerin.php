@@ -19,13 +19,9 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/'); ?>css/bootstrap.css" />
 
     <!--owl slider stylesheet -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <!-- nice select  -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
-        integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
     <!-- font awesome style -->
     <link href="<?= base_url('assets/'); ?>css/font-awesome.min.css" rel="stylesheet" />
 
@@ -52,9 +48,7 @@
                         </span>
                     </a>
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class=""> </span>
                     </button>
 
@@ -190,38 +184,38 @@
             <li data-filter=".burger">Makanan</li>
             <li data-filter=".fries">Minuman</li>
         </ul> -->
-            <?php 
-        $i = 0;
-        ?>
+            <?php
+            $i = 0;
+            ?>
             <div class="filters-content">
                 <div class="row grid">
-                    <?php foreach($t_menu as $menu_tampil){ ?>
-                    <div class="col-sm-6 col-lg-4 all pizza">
-                        <div class="box">
-                            <div>
-                                <div class="img-box">
-                                    <img src="../assets/images/<?= $menu_tampil->foto_menu?>" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h5></h5>
-                                    <?= $menu_tampil->nama_menu ?>
-                                    </h5>
-                                    <p>
-                                        <?= $menu_tampil->deskripsi_menu ?>
-                                    </p>
-                                    <div class="options">
-                                        <h6>
-                                            <?= $menu_tampil->harga_menu ?>
-                                        </h6>
+                    <?php foreach ($t_menu as $menu_tampil) { ?>
+                        <div class="col-sm-6 col-lg-4 all pizza">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="../assets/images/<?= $menu_tampil->foto_menu ?>" alt="">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5></h5>
+                                        <?= $menu_tampil->nama_menu ?>
+                                        </h5>
+                                        <p>
+                                            <?= $menu_tampil->deskripsi_menu ?>
+                                        </p>
+                                        <div class="options">
+                                            <h6>
+                                                <?= $menu_tampil->harga_menu ?>
+                                            </h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <?php
-                    if (++$i == 6) break; 
-                } 
-                ?>
+                        if (++$i == 6) break;
+                    }
+                    ?>
                 </div>
                 <div class="btn-box">
                     <a href="<?= site_url('C_auth/restaurant_menu'); ?>">
@@ -388,8 +382,7 @@
     <!-- jQery -->
     <script src="<?= base_url('assets/'); ?>js/jquery-3.4.1.min.js"></script>
     <!-- popper js -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
     <!-- bootstrap js -->
     <script src="<?= base_url('assets/'); ?>js/bootstrap.js"></script>

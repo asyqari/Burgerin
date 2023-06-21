@@ -23,18 +23,21 @@ class C_auth extends CI_Controller {
     }
     public function cekLogin()
     {
-        $user = '';
-        $pass = '';
+        $email_user = '';
+        $password_user = '';
 
-        $user = $_POST['user'];
-        $pass = $_POST['pass'];
+        $email_user = $_POST['email_user'];
+        $password_user = $_POST['password_user'];
     
         // cek
-        if ($user == "admin" && $pass == "admin123") {
+        if ($email_user == "admin" && $password_user == "admin123") {
             $this->admin_home();
         } 
-        else if($user == "user1" && $pass == "user1"){
-            $this->index();
+        else if($email_user == "user1" && $password_user == "user1"){
+            $this->index_login_user();
+        }
+        else if($email_user == "owner" && $password_user == "owner123"){
+            $this->owner_home();
         }
         else {
             redirect('notif_gagal/gagal-login');
@@ -49,12 +52,40 @@ class C_auth extends CI_Controller {
         $this->load->view('auth/login');
     }
 
+    public function restaurant_menu()
+    {
+        $data['t_menu'] = $this->M_menu->tampil_data_menu()->result();
+        $this->load->view('burgerin/v_menu_burgerin', $data);
+    }
+
+    public function index_login_user() {
+        $data['t_menu'] = $this->M_menu->tampil_data_menu()->result();
+        $this->load->view('burgerin/v_index_burgerin_login_user', $data);
+    }
+    
+    public function restaurant_menu_login_user() {
+        $data['t_menu'] = $this->M_menu->tampil_data_menu()->result();
+        $this->load->view('burgerin/v_menu_burgerin_login_user', $data);
+    }
+    public function restaurant_book_login_user()
+    {
+        $this->load->view('burgerin/v_book_burgerin_login_user');
+    }
+
+    public function owner_penjualan() {
+        $data['t_riwayat'] = $this->M_riwayat->tampil_data_penjualan()->result();
+        $this->load->view('owner/v_owner_data_penjualan', $data);
+    }
+    public function owner_home()
+    {
+        $this->load->view('owner/v_owner_home');
+    }
+    
     public function crud_usr(){
         $data_user = $this->M_user->getAllUsers();
         $temp['data'] = $data_user;
         $this->load->view('admin/v_adm_usr',$temp);
     }
-    
 
     public function insert_user_action(){
         $nama_user = $this->input->post('nama_user');
@@ -168,16 +199,6 @@ class C_auth extends CI_Controller {
         $this->M_menu->delete_menu_data($where, 't_menu');
         redirect(base_url('/index.php/C_auth/crud_menu'));
 	}
-
-    public function restaurant_menu()
-    {
-        $data['t_menu'] = $this->M_menu->tampil_data_menu()->result();
-        
-        $this->load->view('burgerin/v_menu_burgerin', $data);
-    }
-
-    public function restaurant_book()
-    {
-        $this->load->view('burgerin/v_book_burgerin');
-    }
 }
+
+    

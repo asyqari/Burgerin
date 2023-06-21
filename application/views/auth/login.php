@@ -53,12 +53,12 @@
                                         </div>
                                         <form class="user" method="POST" action="<?= site_url('C_auth/cekLogin');?>">
                                             <div class="form-group">
-                                                <input type="text" class="form-control form-control-user" id="user"
-                                                    name="user" placeholder="Username">
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="email_user" name="email_user" placeholder="Email.....">
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" class="form-control form-control-user" id="pass"
-                                                    name="pass" placeholder="Password">
+                                                <input type="password" class="form-control form-control-user"
+                                                    id="password_user" name="password_user" placeholder="Password.....">
                                             </div>
                                             <button type="submit" class="btn btn-user btn-block"
                                                 style="background-color : #FFBE33">

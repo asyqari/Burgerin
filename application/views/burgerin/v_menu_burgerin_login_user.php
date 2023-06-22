@@ -83,14 +83,8 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="<?= site_url('C_auth/restaurant_menu_login_user'); ?>">Menu</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= site_url('C_auth/restaurant_book_login_user'); ?>">Book Menu</a>
-                            </li>
                         </ul>
                         <div class="user_option">
-                            <a href="" class="user_link">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
                             <?php
                             $keranjang = $this->cart->contents();
                             $jml_item = 0;
@@ -102,13 +96,8 @@
                                 <i class="bi bi-cart" aria-hidden="true"></i>
                                 <span class="badge badge-danger navbar-badge"><?= $jml_item ?></span>
                             </a>
-                            <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </form>
-                            <a href="<?= site_url("C_auth/login") ?>" class="order_online">
-                                Masuk Akun
+                            <a href="<?= site_url("C_auth/logout_user") ?>" class="order_online">
+                                Logout
                             </a>
                         </div>
                     </div>

@@ -25,7 +25,7 @@
                 <li><a href="<?php echo base_url('C_auth/admin_home'); ?>">Home</a></li>
                 <li><a href="<?php echo base_url('/C_auth/crud_usr'); ?>">CRUD User</a></li>
                 <li><a href="<?php echo base_url('C_auth/crud_menu'); ?>">CRUD Menu</a></li>
-                <li><a href="<?php echo base_url('C_auth/index'); ?>">Logout</a></li>
+                <li><a href="<?php echo base_url('C_auth/logout_admin'); ?>">Logout</a></li>
             </ul>
         </nav>
     </header>

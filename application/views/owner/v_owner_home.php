@@ -24,7 +24,7 @@
             <ul>
                 <li><a href="<?php echo base_url('C_auth/owner_home'); ?>">Home</a></li>
                 <li><a href="<?php echo base_url('C_auth/owner_penjualan'); ?>">Data Penjualan</a></li>
-                <li><a href="<?php echo base_url('C_auth/index'); ?>">Logout</a></li>
+                <li><a href="<?php echo base_url('C_auth/logout_owner'); ?>">Logout</a></li>
             </ul>
         </nav>
     </header>

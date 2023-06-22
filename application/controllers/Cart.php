@@ -65,6 +65,6 @@ class Cart extends CI_Controller
     {
         $remove = $this->cart->remove($id);
 
-        redirect(base_url() . 'cart');
+        redirect(base_url('Belanja/tampil'));
     }
 }

@@ -13,7 +13,6 @@ class Checkout extends CI_Controller
     {
         $cartItems = $this->cart->contents();
 
-        $id_user = 1;
         $nama_menu = '';
         $quantity = 0;
         $total = 0;
@@ -23,10 +22,9 @@ class Checkout extends CI_Controller
             $total = $total + $item['subtotal'];
         }
         $orderData['id_riwayat'] = '';
-        $orderData['id_user'] = $id_user;
         $orderData['nama_menu'] = $nama_menu;
         $orderData['total_harga'] = $total;
-        $orderData['tgl_transaksi'] = date('Y-m-d H:i:s', now());
+        $orderData['tgl_transaksi'] = date('Y-m-d', now());
         if (!empty($orderData)) {
             $insertOrder = $this->M_order->insertOrder($orderData);
             if ($insertOrder) {

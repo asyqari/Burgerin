@@ -60,19 +60,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= site_url('C_auth/restaurant_menu'); ?>">Menu</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= site_url("C_auth/login") ?>">Book Menu</a>
-                            </li>
                         </ul>
                         <div class="user_option">
-                            <a href="" class="user_link">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
-                            <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                            </form>
                             <a href="<?= site_url("C_auth/login") ?>" class="order_online">
                                 Masuk Akun
                             </a>
@@ -178,12 +167,6 @@
                     Pilihan Menu
                 </h2>
             </div>
-
-            <!-- <ul class="filters_menu">
-            <li class="active" data-filter="*">All</li>
-            <li data-filter=".burger">Makanan</li>
-            <li data-filter=".fries">Minuman</li>
-        </ul> -->
             <?php
             $i = 0;
             ?>
@@ -258,60 +241,6 @@
         </div>
     </section>
     <!-- end book section -->
-
-    <!-- client section -->
-    <!-- <section class="client_section layout_padding-bottom">
-        <div class="container">
-            <div class="heading_container heading_center psudo_white_primary mb_45">
-                <h2>
-                    What Says Our Customers
-                </h2>
-            </div>
-            <div class="carousel-wrap row ">
-                <div class="owl-carousel client_owl-carousel">
-                    <div class="item">
-                        <div class="box">
-                            <div class="detail-box">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                </p>
-                                <h6>
-                                    Moana Michell
-                                </h6>
-                                <p>
-                                    magna aliqua
-                                </p>
-                            </div>
-                            <div class="img-box">
-                                <img src="assets/client1.jpg" alt="" class="box-img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="box">
-                            <div class="detail-box">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                </p>
-                                <h6>
-                                    Mike Hamell
-                                </h6>
-                                <p>
-                                    magna aliqua
-                                </p>
-                            </div>
-                            <div class="img-box">
-                                <img src="assets/client2.jpg" alt="" class="box-img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- end client section -->
     <!-- footer section -->
     <footer class="footer_section">
         <div class="container">

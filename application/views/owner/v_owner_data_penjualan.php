@@ -15,16 +15,17 @@
     <link rel="shortcut icon" href="<?= base_url('assets/'); ?>images/logo-burger.png" type="">
     <link href="<?= base_url('assets/'); ?>css/adm_usr.css" rel="stylesheet">
     <script src="<?= base_url('assets/'); ?>js/adm_usr.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 
 <body>
     <header>
-        <div class="logo">CRUD USER</div>
+        <div class="logo">Data Penjualan</div>
         <nav>
             <ul>
                 <li><a href="<?php echo base_url('C_auth/owner_home'); ?>">Home</a></li>
                 <li><a href="<?php echo base_url('C_auth/owner_penjualan'); ?>">Data Penjualan</a></li>
-                <li><a href="<?php echo base_url('C_auth/index'); ?>">Logout</a></li>
+                <li><a href="<?php echo base_url('C_auth/logout_owner'); ?>">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -42,29 +43,34 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Total Harga</th>
                             <th>Tanggal Transaksi</th>
+                            <th>Jumlah Penjualan</th>
+                            <th>Total Penjualan</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <?php $nomor = 1; ?>
-                            <?php foreach ($data as $dtm) : ?>
-                        <tr>
-                            <td><?= $nomor ?></td>
-                            <td><?= $dtm->nama_user; ?></td>
-                            <td><?= $dtm->total_harga; ?></td>
-                            <td><?= $dtm->tgl_transaksi; ?></td>
+                            <?php foreach ($t_riwayat as $dtm) : ?>
+                                <td><?= $nomor ?></td>
+                                <td><?= $dtm->tgl_transaksi; ?></td>
+                                <td><?= $dtm->total_riwayat; ?></td>
+
+                                <td><?= "Rp." . $dtm->total_harga; ?></td>
                         </tr>
                         <?php $nomor++; ?>
-                        <?php endforeach; ?>
-                        </tr>
+                    <?php endforeach; ?>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+
+
+
+
 </body>
 
 </html>
